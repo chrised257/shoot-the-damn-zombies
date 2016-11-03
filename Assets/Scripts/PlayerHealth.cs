@@ -2,17 +2,20 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class PlayerHealth : Health {
+public class PlayerHealth : MonoBehaviour {
 
+    public float maxHealth = 10.0f;
     public Text dieLabel;
 
-    protected override void Start()
+    protected float currentHealth;
+
+    void Start()
     {
-        base.Start();
+        currentHealth = maxHealth;
         dieLabel.gameObject.SetActive(false);
     }
 
-    public override void takeDamage(float damage)
+    public void takeDamage(float damage)
     {
         currentHealth -= damage;
         if (currentHealth <= 0)
